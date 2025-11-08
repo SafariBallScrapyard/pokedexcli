@@ -19,7 +19,7 @@ type config struct {
 func startRepl(cfg *config) {
 	scanner := bufio.NewScanner(os.Stdin)
 	for {
-		fmt.Print("Pokedex > ")
+		fmt.Print("Pokédex > ")
 		scanner.Scan()
 
 		input := cleanInput(scanner.Text())
@@ -63,7 +63,7 @@ func getCommands() map[string]cliCommand {
 	return map[string]cliCommand{
 		"help": {
 			name:        "help",
-			description: "Displays a help message",
+			description: "Display a help message",
 			callback:    commandHelp,
 		},
 		"map": {
@@ -91,9 +91,14 @@ func getCommands() map[string]cliCommand {
 			description: "List details about a Pokémon you've caught",
 			callback:    commandInspect,
 		},
+		"pokedex": {
+			name:        "pokedex",
+			description: "List all Pokémon you've caught",
+			callback:    commandPokedex,
+		},
 		"exit": {
 			name:        "exit",
-			description: "Exit the Pokedex",
+			description: "Exit the Pokédex",
 			callback:    commandExit,
 		},
 	}
